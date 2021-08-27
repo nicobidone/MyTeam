@@ -1,23 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
-
-apply from: '../buildsystem/dependencies.gradle'
 
 android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.example.myteam"
         minSdk 23
         targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,15 +33,4 @@ android {
 
 dependencies {
     implementation project(path: ':domain')
-
-    implementation base.core_lib
-    implementation base.appcompat_lib
-    implementation base.material_lib
-    implementation base.constraintlayout_lib
-    implementation base.hilt_lib
-    implementation base.hilt_compiler_lib
-
-    testImplementation base_test.junit_lib
-    androidTestImplementation base_test.junit_ext_lib
-    androidTestImplementation base_test.espresso_lib
 }
