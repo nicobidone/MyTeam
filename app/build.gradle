@@ -3,9 +3,12 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
 }
 
 apply from: '../buildsystem/dependencies.gradle'
+apply from: '../buildsystem/jacoco.gradle'
+apply from: '../buildsystem/ktlint.gradle'
 
 android {
     compileSdk 30
@@ -33,6 +36,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -43,7 +50,9 @@ dependencies {
     implementation base.material_lib
     implementation base.constraintlayout_lib
     implementation base.hilt_lib
-    implementation base.hilt_compiler_lib
+    implementation base.nav_fragment
+    implementation base.nav_ui
+    kapt base.hilt_kapt
 
     testImplementation base_test.junit_lib
     androidTestImplementation base_test.junit_ext_lib
