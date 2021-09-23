@@ -1,10 +1,9 @@
-package com.prisma.todopago.commons.ui.utils.navigation
+package com.example.myteam.utils.navigation
 
 import android.app.Activity
 import android.content.Intent
-import com.example.myteam.navigation.AnimationFlow
 
-data class CloseWrapper(
+data class NavigationExitWrapper(
     var resultCode: Int = Activity.RESULT_CANCELED,
     val requestCode: Int = Activity.RESULT_CANCELED,
     var animationFlow: AnimationFlow = AnimationFlow(),

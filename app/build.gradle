@@ -53,6 +53,9 @@ dependencies {
     implementation base.hilt_lib
     implementation base.nav_fragment
     implementation base.nav_ui
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     kapt base.hilt_kapt
 
     testImplementation base_test.junit_lib

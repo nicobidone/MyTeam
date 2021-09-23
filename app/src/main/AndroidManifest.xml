@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTeam">
         <activity
+            android:name=".request.RequestActivity"
+            android:exported="true" />
+        <activity
             android:name=".main.MainActivity"
             android:exported="true">
             <intent-filter>
