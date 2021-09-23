@@ -1,4 +1,4 @@
-package com.example.myteam
+package com.example.myteam.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
