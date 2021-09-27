@@ -12,7 +12,6 @@ task ktlint(type: JavaExec, group: "verification") {
     main = "com.pinterest.ktlint.Main"
     args "src/**/*.kt"
 }
-check.dependsOn ktlint
 
 task ktlintFormat(type: JavaExec, group: "formatting") {
     description = "Fix Kotlin code style deviations."
@@ -20,4 +19,3 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
     main = "com.pinterest.ktlint.Main"
     args "-F", "src/**/*.kt"
 }
-preBuild.dependsOn ktlintFormat

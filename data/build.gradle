@@ -3,6 +3,10 @@ plugins {
     id 'kotlin-android'
 }
 
+apply from: "$rootDir/buildsystem/jacoco.gradle"
+
+preBuild.dependsOn ktlintFormat
+
 android {
     compileSdk 30
 
