@@ -13,6 +13,11 @@ class LoaderFragment : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
         inflater.inflate(R.layout.fragment_loader, container, false)
 
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.setWindowAnimations(R.style.dialog_animation_fade)
+    }
+
     override fun onResume() {
         dialog?.window?.apply {
             isCancelable = false

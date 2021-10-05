@@ -1,6 +1,7 @@
 package com.example.myteam.base
 
 import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,10 @@ abstract class BaseActivity<B : ViewBinding> : AppCompatActivity() {
 
     fun hideLoader() {
         loaderDialog.dismiss()
+    }
+
+    fun isNetworkConnected(): Boolean = with(this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager) {
+        this.activeNetworkInfo?.isConnectedOrConnecting == true
     }
 
     companion object {

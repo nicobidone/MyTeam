@@ -29,6 +29,7 @@ abstract class BaseFragment<B : ViewBinding, A : BaseActivity<*>> : Fragment() {
     fun getParentActivity() = parentActivity.get()
 
     fun showLoader() {
+        hideKeyboard()
         parentActivity.get()?.showLoader()
     }
 
@@ -39,4 +40,6 @@ abstract class BaseFragment<B : ViewBinding, A : BaseActivity<*>> : Fragment() {
     fun hideLoader() {
         parentActivity.get()?.hideLoader()
     }
+
+    fun isNetworkConnected() = parentActivity.get()?.isNetworkConnected()
 }
