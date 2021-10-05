@@ -1,7 +1,6 @@
 package com.example.myteam.request
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.example.myteam.BaseActivity
 import com.example.myteam.R
 import com.example.myteam.databinding.ActivityRequestBinding
 import com.example.myteam.utils.navigation.AnimationFlow
@@ -10,15 +9,7 @@ import com.example.myteam.utils.navigation.closeActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RequestActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityRequestBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityRequestBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-    }
+class RequestActivity : BaseActivity<ActivityRequestBinding>() {
 
     override fun onBackPressed() {
         super.onBackPressed()
@@ -31,4 +22,6 @@ class RequestActivity : AppCompatActivity() {
             )
         )
     }
+
+    override fun getBindingClass(): ActivityRequestBinding = ActivityRequestBinding.inflate(layoutInflater)
 }
