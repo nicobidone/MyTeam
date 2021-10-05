@@ -12,7 +12,8 @@ ext {
         junit_ext       : "1.1.3",
         espresso        : "3.4.0",
         hilt            : "2.38.1",
-        nav             : "2.3.5"
+        nav             : "2.3.5",
+        realm           : "10.8.0"
     ]
 
     base = [
@@ -25,6 +26,7 @@ ext {
         lifecycle_viewmodel: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
         // hilt
         hilt               : "com.google.dagger:hilt-android:${versions.hilt}",
+        hilt_core          : "com.google.dagger:hilt-core:${versions.hilt}",
         hilt_kapt          : "com.google.dagger:hilt-compiler:${versions.hilt}",
         // navigation
         nav_fragment       : "androidx.navigation:navigation-fragment-ktx:${versions.nav}",

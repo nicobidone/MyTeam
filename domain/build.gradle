@@ -13,3 +13,9 @@ compileKotlin {
         freeCompilerArgs = ["-XXLanguage:+InlineClasses"]
     }
 }.dependsOn ktlint
+
+dependencies {
+
+    implementation base.hilt_core
+    annotationProcessor base.hilt_kapt
+}
