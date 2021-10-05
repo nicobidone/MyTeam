@@ -1,6 +1,6 @@
 package com.example.myteam.request
 
-import com.example.myteam.BaseActivity
+import com.example.myteam.base.BaseActivity
 import com.example.myteam.R
 import com.example.myteam.databinding.ActivityRequestBinding
 import com.example.myteam.utils.navigation.AnimationFlow

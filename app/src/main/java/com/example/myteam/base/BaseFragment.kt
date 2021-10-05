@@ -1,4 +1,4 @@
-package com.example.myteam
+package com.example.myteam.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,8 +11,9 @@ import java.lang.ref.WeakReference
 abstract class BaseFragment<B : ViewBinding, A : BaseActivity<*>> : Fragment() {
 
     protected lateinit var binding: B
-    lateinit var parentActivity: WeakReference<A>
-        private set
+    private lateinit var parentActivity: WeakReference<A>
+
+    abstract fun getBindingClass(): B
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,5 +26,17 @@ abstract class BaseFragment<B : ViewBinding, A : BaseActivity<*>> : Fragment() {
         return binding.root
     }
 
-    abstract fun getBindingClass(): B
+    fun getParentActivity() = parentActivity.get()
+
+    fun showLoader() {
+        parentActivity.get()?.showLoader()
+    }
+
+    fun hideKeyboard() {
+        parentActivity.get()?.hideKeyboard()
+    }
+
+    fun hideLoader() {
+        parentActivity.get()?.hideLoader()
+    }
 }

@@ -3,7 +3,7 @@ package com.example.myteam.main
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import com.example.myteam.BaseFragment
+import com.example.myteam.base.BaseFragment
 import com.example.myteam.R
 import com.example.myteam.databinding.FragmentMainBinding
 import com.example.myteam.request.RequestActivity
