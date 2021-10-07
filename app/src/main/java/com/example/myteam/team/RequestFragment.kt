@@ -1,4 +1,4 @@
-package com.example.myteam.request
+package com.example.myteam.team
 
 import android.os.Bundle
 import android.view.View
@@ -14,7 +14,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class RequestFragment : BaseFragment<FragmentRequestBinding, RequestActivity>() {
+class RequestFragment : BaseFragment<FragmentRequestBinding, TeamActivity>() {
 
     private val viewModel: RequestViewModel by viewModels()
 

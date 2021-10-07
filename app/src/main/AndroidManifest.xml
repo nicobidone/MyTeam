@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTeam">
         <activity
-            android:name=".request.RequestActivity"
+            android:name=".team.TeamActivity"
             android:exported="true" />
         <activity
             android:name=".main.MainActivity"

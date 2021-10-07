@@ -1,4 +1,4 @@
-package com.example.myteam.request
+package com.example.myteam.team
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

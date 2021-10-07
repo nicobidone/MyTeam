@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/requestFragment"
-        android:name="com.example.myteam.request.RequestFragment"
+        android:name="com.example.myteam.team.RequestFragment"
         android:label="fragment_request"
         tools:layout="@layout/fragment_request" />
 </navigation>

@@ -6,7 +6,7 @@ import androidx.fragment.app.viewModels
 import com.example.myteam.base.BaseFragment
 import com.example.myteam.R
 import com.example.myteam.databinding.FragmentMainBinding
-import com.example.myteam.request.RequestActivity
+import com.example.myteam.team.TeamActivity
 import com.example.myteam.utils.navigation.AnimationFlow
 import com.example.myteam.utils.navigation.NavigationWrapper
 import com.example.myteam.utils.navigation.navigate
@@ -29,7 +29,7 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainActivity>() {
                     intro = R.anim.slide_in_right,
                     exit = R.anim.slide_out_left
                 ),
-                destination = RequestActivity::class.java,
+                destination = TeamActivity::class.java,
             )
         )
     }
