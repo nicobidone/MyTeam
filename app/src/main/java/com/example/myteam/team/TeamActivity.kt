@@ -1,5 +1,6 @@
 package com.example.myteam.team
 
+import androidx.navigation.Navigation
 import com.example.myteam.R
 import com.example.myteam.base.BaseActivity
 import com.example.myteam.databinding.ActivityTeamBinding
@@ -12,7 +13,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class TeamActivity : BaseActivity<ActivityTeamBinding>() {
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        val navController = Navigation.findNavController(this, R.id.nhf_activity_team)
+        when (navController.currentDestination?.id) {
+            R.id.createPlayerFragment -> navController.popBackStack()
+            else -> closeActivity()
+        }
+    }
+
+    private fun closeActivity() {
         closeActivity(
             NavigationExitWrapper(
                 animationFlow = AnimationFlow(

@@ -2,12 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/request_graph.xml"
+    android:id="@+id/request_graph"
     app:startDestination="@id/requestFragment">
 
     <fragment
         android:id="@+id/requestFragment"
         android:name="com.example.myteam.team.RequestFragment"
         android:label="fragment_request"
-        tools:layout="@layout/fragment_request" />
+        tools:layout="@layout/fragment_request">
+        <action
+            android:id="@+id/action_requestFragment_to_createPlayerFragment"
+            app:destination="@id/createPlayerFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPlayerFragment"
+        android:name="com.example.myteam.team.CreatePlayerFragment"
+        android:label="fragment_create_player"
+        tools:layout="@layout/fragment_create_player" />
 </navigation>
