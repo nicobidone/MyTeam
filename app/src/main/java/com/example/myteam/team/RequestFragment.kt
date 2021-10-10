@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.domain.entity.Player
 import com.example.myteam.base.BaseFragment
+import com.example.myteam.compound.view.StatusCompoundView
 import com.example.myteam.databinding.FragmentRequestBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -29,6 +30,8 @@ class RequestFragment : BaseFragment<FragmentRequestBinding, TeamActivity>() {
             delay(5000)
             hideLoader()
         }
+
+        binding.statusView.setStatus(StatusCompoundView.Status.SUCCESS)
     }
 
     private val observer = Observer<List<Player>> {
