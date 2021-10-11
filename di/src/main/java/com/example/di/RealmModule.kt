@@ -22,10 +22,11 @@ object RealmModule {
                 .Builder()
                 .name("My team proyect")
                 .schemaVersion(REALM_VERSION)
+                .deleteRealmIfMigrationNeeded()
                 .build()
         )
         return Realm.getDefaultInstance()
     }
 
-    private const val REALM_VERSION = 1L
+    private const val REALM_VERSION = 2L
 }

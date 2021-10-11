@@ -3,6 +3,7 @@ package com.example.data
 import com.example.domain.entity.Player
 import com.example.domain.entity.Position
 import com.example.domain.entity.toPosition
+import com.example.domain.extension.cleanStringList
 import com.example.domain.repository.PlayerRepository
 import io.realm.Realm
 import io.realm.kotlin.executeTransactionAwait
@@ -11,9 +12,9 @@ import javax.inject.Inject
 
 class PlayerRepositoryImpl @Inject constructor(private val realm: Realm) : PlayerRepository {
 
-    override suspend fun setPlayer(name: String, position: Position) {
+    override suspend fun setPlayer(name: String, age: Int, positions: List<Position>) {
         realm.executeTransactionAwait(Dispatchers.IO) { realmTransaction ->
-            realmTransaction.insert(PlayerRealm(name = name, position = position.toString()))
+            realmTransaction.insert(PlayerRealm(name = name, age = age, position = positions.toString()))
         }
     }
 
@@ -33,5 +34,6 @@ class PlayerRepositoryImpl @Inject constructor(private val realm: Realm) : Playe
 
 fun PlayerRealm.mapPlayer() = Player(
     name = name,
-    position = position.toPosition()
+    age = age,
+    position = position.cleanStringList().map { it.toPosition() }
 )

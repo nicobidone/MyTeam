@@ -18,13 +18,12 @@
         style="@style/MaterialToggle">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/dc"
+            android:id="@+id/dl"
             style="@style/MaterialToggleButton" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/dl"
-            style="@style/MaterialToggleButton"
-            android:paddingHorizontal="5dp" />
+            android:id="@+id/dc"
+            style="@style/MaterialToggleButton" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/dr"
@@ -45,15 +44,15 @@
         style="@style/MaterialToggle">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/ml"
+            style="@style/MaterialToggleButton" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/mc"
             style="@style/MaterialToggleButton" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mr"
-            style="@style/MaterialToggleButton" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/ml"
             style="@style/MaterialToggleButton" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
@@ -62,15 +61,15 @@
         style="@style/MaterialToggle">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/aml"
+            style="@style/MaterialToggleButton" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/amc"
             style="@style/MaterialToggleButton" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/amr"
-            style="@style/MaterialToggleButton" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/aml"
             style="@style/MaterialToggleButton" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 

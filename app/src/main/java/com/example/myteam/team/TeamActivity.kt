@@ -13,10 +13,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class TeamActivity : BaseActivity<ActivityTeamBinding>() {
 
     override fun onBackPressed() {
-        val navController = Navigation.findNavController(this, R.id.nhf_activity_team)
-        when (navController.currentDestination?.id) {
-            R.id.createPlayerFragment -> navController.popBackStack()
-            else -> closeActivity()
+        with(getNavController()) {
+            when (this.currentDestination?.id) {
+                R.id.createPlayerFragment -> this.popBackStack()
+                else -> closeActivity()
+            }
         }
     }
 
@@ -31,5 +32,7 @@ class TeamActivity : BaseActivity<ActivityTeamBinding>() {
         )
     }
 
-    override fun getBindingClass(): ActivityTeamBinding = ActivityTeamBinding.inflate(layoutInflater)
+    override fun getNavController() = Navigation.findNavController(this, R.id.nhf_activity_team)
+
+    override fun getBinding(): ActivityTeamBinding = ActivityTeamBinding.inflate(layoutInflater)
 }

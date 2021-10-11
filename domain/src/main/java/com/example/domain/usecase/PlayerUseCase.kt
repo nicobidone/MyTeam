@@ -6,8 +6,8 @@ import javax.inject.Inject
 
 class PlayerUseCase @Inject constructor(private val playerRepository: PlayerRepository) {
 
-    suspend fun insertPlayer(s: String, gk: Position) {
-        playerRepository.setPlayer(s, gk)
+    suspend fun insertPlayer(name: String, age: Int, positions: List<Position>) {
+        playerRepository.setPlayer(name, age, positions)
     }
 
     suspend fun getPlayers() = playerRepository.getPlayers()

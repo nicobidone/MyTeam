@@ -3,4 +3,8 @@
     <string name="label">something</string>
     <string name="success">Success</string>
     <string name="error">Error</string>
+    <string name="placeholder">AMC</string>
+    <string name="request_add_player_desc">Add a new player</string>
+    <string name="create_player_age">Edad</string>
+    <string name="create_player_name">Nombre</string>
 </resources>
