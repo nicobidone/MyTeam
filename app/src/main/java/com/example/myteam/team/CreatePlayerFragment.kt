@@ -16,10 +16,14 @@ class CreatePlayerFragment : BaseFragment<FragmentCreatePlayerBinding, TeamActiv
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnCreatePlayer.setOnClickListener(createListener)
+        initOnClickListeners()
     }
 
-    private val createListener = View.OnClickListener {
+    private fun initOnClickListeners() {
+        binding.btnCreatePlayer.setOnClickListener(createPlayerListener)
+    }
+
+    private val createPlayerListener = View.OnClickListener {
         viewModel.insertPlayer(
             binding.tfCreatePlayerName.editText?.text.toString(),
             binding.tfCreatePlayerAge.editText?.text.toString().toInt(),

@@ -23,8 +23,8 @@ class RequestFragment : BaseFragment<FragmentRequestBinding, TeamActivity>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.playersLiveData.observe(viewLifecycleOwner, observer)
-        binding.fabRequestAddPlayer.setOnClickListener(addPlayerListener)
+        initOnClickListeners()
+        initObservers()
     }
 
     override fun onResume() {
@@ -32,7 +32,15 @@ class RequestFragment : BaseFragment<FragmentRequestBinding, TeamActivity>() {
         viewModel.getPlayers()
     }
 
-    private val observer = Observer<List<Player>> {
+    private fun initOnClickListeners() {
+        binding.fabRequestAddPlayer.setOnClickListener(addPlayerListener)
+    }
+
+    private fun initObservers() {
+        viewModel.playersLiveData.observe(viewLifecycleOwner, playersObserver)
+    }
+
+    private val playersObserver = Observer<List<Player>> {
         createRecyclerView(it)
     }
 
