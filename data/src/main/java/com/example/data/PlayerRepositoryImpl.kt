@@ -1,6 +1,6 @@
 package com.example.data
 
-import com.example.domain.entity.Player
+import com.example.domain.entity.PlayerEntity
 import com.example.domain.entity.Position
 import com.example.domain.entity.toPosition
 import com.example.domain.extension.cleanStringList
@@ -18,8 +18,8 @@ class PlayerRepositoryImpl @Inject constructor(private val realm: Realm) : Playe
         }
     }
 
-    override suspend fun getPlayers(): List<Player> {
-        val result = mutableListOf<Player>()
+    override suspend fun getPlayers(): List<PlayerEntity> {
+        val result = mutableListOf<PlayerEntity>()
         realm.executeTransactionAwait(Dispatchers.IO) { realmTransaction ->
             result.addAll(
                 realmTransaction
@@ -30,10 +30,37 @@ class PlayerRepositoryImpl @Inject constructor(private val realm: Realm) : Playe
         }
         return result
     }
-}
 
-fun PlayerRealm.mapPlayer() = Player(
-    name = name,
-    age = age,
-    position = position.cleanStringList().map { it.toPosition() }
-)
+    override suspend fun updatePlayer(id: String, name: String, age: Int, position: List<Position>) {
+        realm.executeTransactionAwait(Dispatchers.IO) { realmTransaction ->
+            realmTransaction
+                .where(PlayerRealm::class.java)
+                .equalTo("id", id)
+                .findFirst()
+                .apply {
+                    this?.name = name
+                    this?.age = age
+                    this?.position = position.toString()
+                }
+        }
+    }
+
+    override suspend fun removePlayer(id: String) {
+        realm.executeTransactionAwait(Dispatchers.IO) { realmTransaction ->
+            realmTransaction
+                .where(PlayerRealm::class.java)
+                .equalTo("id", id)
+                .findFirst()
+                .apply {
+                    this?.deleteFromRealm()
+                }
+        }
+    }
+
+    private fun PlayerRealm.mapPlayer() = PlayerEntity(
+        id = id,
+        name = name,
+        age = age,
+        position = position.cleanStringList().map { it.toPosition() }
+    )
+}

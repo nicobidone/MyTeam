@@ -41,7 +41,25 @@ abstract class GenericAdapter<T> : RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     abstract fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder
 
+    fun deleteItem(itemIndex: Int) {
+        (listItems as MutableList<T>).removeAt(itemIndex)
+    }
+
     internal interface Binder<T> {
         fun bind(data: T)
     }
 }
+
+/*
+        val myAdapter = object : GenericAdapter<Player>(dialogResult) {
+            override fun getLayoutId(position: Int, obj: Player): Int = R.layout.item_request
+            override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder =
+                RequestViewHolder(ItemRequestBinding.inflate(layoutInflater))
+        }
+        binding.rvRequestPlayers.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = myAdapter
+            visibility = View.VISIBLE
+        }
+ */

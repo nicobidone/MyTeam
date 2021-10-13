@@ -1,0 +1,43 @@
+Multi FAB Menu
+
+    private val fabListener = View.OnClickListener {
+        if (!isFABOpen) {
+            showFABMenu()
+        } else {
+            closeFABMenu()
+        }
+    }
+
+    private fun showFABMenu() {
+        with(binding) {
+            isFABOpen = true
+            fabRequestAddPlayer.enterAnimation(R.dimen.first_button)
+            fabRequestEditPlayer.enterAnimation(R.dimen.second_button)
+            fabRequestRemovePlayer.enterAnimation(R.dimen.third_button)
+        }
+    }
+
+    private fun closeFABMenu() {
+        isFABOpen = false
+        with(binding) {
+            fabRequestAddPlayer.exitAnimation()
+            fabRequestEditPlayer.exitAnimation()
+            fabRequestRemovePlayer.exitAnimation()
+        }
+    }
+
+    private fun FloatingActionButton.enterAnimation(dimen: Int) {
+        with(this) {
+            animate().translationY(-resources.getDimension(dimen))
+            animate().alpha(1f)
+            elevation = 16f
+        }
+    }
+
+    private fun FloatingActionButton.exitAnimation() {
+        with(this) {
+            animate().translationY(0f)
+            animate().alpha(0f)
+            elevation = 0f
+        }
+    }

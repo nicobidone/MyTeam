@@ -79,4 +79,25 @@ class PositionSelectCompoundView : LinearLayout {
     }
 
     fun getSelectedList(): List<Position> = selectedList.map { it.toPosition() }
+
+    fun setSelected(positions: List<Position>) {
+        with(binding) {
+            for (position in positions) {
+                when (position) {
+                    Position.GK -> tbPo.check(gk.id)
+                    Position.DC -> tbD.check(dc.id)
+                    Position.DL -> tbD.check(dl.id)
+                    Position.DR -> tbD.check(dr.id)
+                    Position.DMC -> tbDm.check(dmc.id)
+                    Position.MC -> tbM.check(mc.id)
+                    Position.ML -> tbM.check(ml.id)
+                    Position.MR -> tbM.check(mr.id)
+                    Position.AMC -> tbMo.check(amc.id)
+                    Position.AML -> tbMo.check(aml.id)
+                    Position.AMR -> tbMo.check(amr.id)
+                    Position.ST -> tbMp.check(st.id)
+                }
+            }
+        }
+    }
 }

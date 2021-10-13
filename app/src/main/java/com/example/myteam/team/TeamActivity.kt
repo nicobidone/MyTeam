@@ -34,5 +34,5 @@ class TeamActivity : BaseActivity<ActivityTeamBinding>() {
 
     override fun getNavController() = Navigation.findNavController(this, R.id.nhf_activity_team)
 
-    override fun getBinding(): ActivityTeamBinding = ActivityTeamBinding.inflate(layoutInflater)
+    override fun getBinding() = ActivityTeamBinding.inflate(layoutInflater)
 }

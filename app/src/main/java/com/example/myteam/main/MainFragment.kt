@@ -34,5 +34,5 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainActivity>() {
         )
     }
 
-    override fun getBindingClass(): FragmentMainBinding = FragmentMainBinding.inflate(layoutInflater)
+    override fun getBindingClass() = FragmentMainBinding.inflate(layoutInflater)
 }

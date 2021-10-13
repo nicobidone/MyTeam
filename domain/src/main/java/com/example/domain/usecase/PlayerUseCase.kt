@@ -1,14 +1,33 @@
 package com.example.domain.usecase
 
+import com.example.domain.entity.PlayerEntity
 import com.example.domain.entity.Position
 import com.example.domain.repository.PlayerRepository
 import javax.inject.Inject
 
 class PlayerUseCase @Inject constructor(private val playerRepository: PlayerRepository) {
 
-    suspend fun insertPlayer(name: String, age: Int, positions: List<Position>) {
+    private suspend fun insertPlayer(name: String, age: Int, positions: List<Position>) {
         playerRepository.setPlayer(name, age, positions)
     }
 
+    private suspend fun updatePlayer(id: String, name: String, age: Int, position: List<Position>) {
+        playerRepository.updatePlayer(id, name, age, position)
+    }
+
     suspend fun getPlayers() = playerRepository.getPlayers()
+
+    suspend fun removePlayer(id: String) {
+        playerRepository.removePlayer(id)
+    }
+
+    fun isValidData(player: PlayerEntity): Boolean = with(player) { name.isEmpty() || age > 0 || position.isEmpty() }
+
+    suspend fun updateData(player: PlayerEntity) = with(player) {
+        if (id.isEmpty()) {
+            insertPlayer(name, age, position)
+        } else {
+            updatePlayer(id, name, age, position)
+        }
+    }
 }

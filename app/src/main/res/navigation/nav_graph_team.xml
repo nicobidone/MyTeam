@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/request_graph"
-    app:startDestination="@id/requestFragment">
+    app:startDestination="@id/teamFragment">
 
     <fragment
-        android:id="@+id/requestFragment"
-        android:name="com.example.myteam.team.RequestFragment"
+        android:id="@+id/teamFragment"
+        android:name="com.example.myteam.team.TeamFragment"
         android:label="fragment_request"
-        tools:layout="@layout/fragment_request">
+        tools:layout="@layout/fragment_team">
         <action
-            android:id="@+id/action_requestFragment_to_createPlayerFragment"
+            android:id="@+id/to_createPlayerFragment"
             app:destination="@id/createPlayerFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -20,7 +20,13 @@
     </fragment>
     <fragment
         android:id="@+id/createPlayerFragment"
-        android:name="com.example.myteam.team.CreatePlayerFragment"
+        android:name="com.example.myteam.team.CreateEditPlayerFragment"
         android:label="fragment_create_player"
-        tools:layout="@layout/fragment_create_player" />
+        tools:layout="@layout/fragment_create_edit_player">
+        <argument
+            android:name="arg"
+            android:defaultValue="@null"
+            app:argType="com.example.domain.entity.PlayerEntity"
+            app:nullable="true" />
+    </fragment>
 </navigation>

@@ -7,4 +7,7 @@
     <string name="request_add_player_desc">Add a new player</string>
     <string name="create_player_age">Edad</string>
     <string name="create_player_name">Nombre</string>
+    <string name="create_player_action">crear</string>
+    <string name="create_player_missing_info">Datos faltantes</string>
+    <string name="create_player_action_edit">Guardar</string>
 </resources>
