@@ -13,12 +13,14 @@ import com.example.myteam.base.BaseFragment
 import com.example.myteam.databinding.FragmentRequestBinding
 import com.example.myteam.databinding.ItemRequestBinding
 import com.example.myteam.utils.adapter.GenericAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RequestFragment : BaseFragment<FragmentRequestBinding, TeamActivity>() {
 
     private val viewModel: RequestViewModel by viewModels()
+    private var isFABOpen = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,9 +32,11 @@ class RequestFragment : BaseFragment<FragmentRequestBinding, TeamActivity>() {
     override fun onResume() {
         super.onResume()
         viewModel.getPlayers()
+        isFABOpen = false
     }
 
     private fun initOnClickListeners() {
+        binding.fabRequestMenu.setOnClickListener(fabListener)
         binding.fabRequestAddPlayer.setOnClickListener(addPlayerListener)
     }
 
@@ -62,5 +66,47 @@ class RequestFragment : BaseFragment<FragmentRequestBinding, TeamActivity>() {
         findNavController().navigate(RequestFragmentDirections.actionRequestFragmentToCreatePlayerFragment())
     }
 
+    private val fabListener = View.OnClickListener {
+        if (!isFABOpen) {
+            showFABMenu()
+        } else {
+            closeFABMenu()
+        }
+    }
+
+    private fun showFABMenu() {
+        with(binding) {
+            isFABOpen = true
+            fabRequestAddPlayer.enterAnimation(R.dimen.first_button)
+            fabRequestEditPlayer.enterAnimation(R.dimen.second_button)
+            fabRequestRemovePlayer.enterAnimation(R.dimen.third_button)
+        }
+    }
+
+    private fun closeFABMenu() {
+        isFABOpen = false
+        with(binding) {
+            fabRequestAddPlayer.exitAnimation()
+            fabRequestEditPlayer.exitAnimation()
+            fabRequestRemovePlayer.exitAnimation()
+        }
+    }
+
     override fun getBindingClass(): FragmentRequestBinding = FragmentRequestBinding.inflate(layoutInflater)
+
+    private fun FloatingActionButton.enterAnimation(dimen: Int) {
+        with(this) {
+            animate().translationY(-resources.getDimension(dimen))
+            animate().alpha(1f)
+            elevation = 16f
+        }
+    }
+
+    private fun FloatingActionButton.exitAnimation() {
+        with(this) {
+            animate().translationY(0f)
+            animate().alpha(0f)
+            elevation = 0f
+        }
+    }
 }

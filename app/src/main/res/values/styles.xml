@@ -18,4 +18,16 @@
         <item name="android:text">@string/placeholder</item>
     </style>
 
+    <style name="fab">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="elevation">0dp</item>
+        <item name="android:layout_margin">@dimen/request_fab_margin</item>
+        <item name="android:clickable">true</item>
+        <item name="android:contentDescription">@string/request_add_player_desc</item>
+        <item name="android:focusable">true</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
+        <item name="layout_constraintEnd_toEndOf">parent</item>
+    </style>
+
 </resources>

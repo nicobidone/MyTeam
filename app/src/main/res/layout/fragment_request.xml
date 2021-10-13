@@ -15,15 +15,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_request_add_player"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/request_fab_margin"
-        android:clickable="true"
-        android:contentDescription="@string/request_add_player_desc"
-        android:focusable="true"
-        android:src="@drawable/ic_success"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:id="@+id/fab_request_remove_player"
+        style="@style/fab"
+        android:src="@drawable/ic_delete" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_request_edit_player"
+        style="@style/fab"
+        android:src="@drawable/ic_edit" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_request_add_player"
+        style="@style/fab"
+        android:src="@drawable/ic_success" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_request_menu"
+        style="@style/fab"
+        app:elevation="4dp"
+        android:src="@drawable/ic_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
