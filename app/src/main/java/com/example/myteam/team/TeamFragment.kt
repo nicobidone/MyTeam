@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.domain.entity.PlayerEntity
 import com.example.myteam.base.BaseFragment
@@ -34,18 +35,23 @@ class TeamFragment : BaseFragment<FragmentTeamBinding, TeamActivity>() {
     }
 
     private fun initObservers() {
-        viewModel.playersLiveData.observe(viewLifecycleOwner, playersObserver)
+        viewModel.playersLiveData.observe(viewLifecycleOwner, playersObserver())
     }
 
-    private val playersObserver = Observer<List<PlayerEntity>> {
-        createRecyclerView(it)
+    private fun playersObserver() = Observer<List<PlayerEntity>> {
+        setUpRecyclerView(it)
     }
 
-    private fun createRecyclerView(dialogResult: List<PlayerEntity>) {
-        val myAdapter = TeamPlayerAdapter(dialogResult.toMutableList()) { findNavController().navigate(toCreatePlayerFragment(it)) }
+    private fun setUpRecyclerView(dialogResult: List<PlayerEntity>) {
+        val myAdapter = TeamPlayerAdapter(
+            dialogResult.toMutableList(),
+            { findNavController().navigate(toCreatePlayerFragment(it)) },
+            { viewModel.removePlayer(it.id) }
+        )
         binding.rvTeamPlayers.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = myAdapter
+            ItemTouchHelper(SwipeHelperCallback(myAdapter)).attachToRecyclerView(this)
         }
     }
 

@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class TeamViewModel @Inject constructor(private val playerUseCase: PlayerUseCase) : ViewModel() {
 
-    val playersLiveData: MutableLiveData<List<PlayerEntity>> by lazy { MutableLiveData<List<PlayerEntity>>(emptyList()) }
+    val playersLiveData by lazy { MutableLiveData<List<PlayerEntity>>() }
 
     fun getPlayers() {
         viewModelScope.launch {

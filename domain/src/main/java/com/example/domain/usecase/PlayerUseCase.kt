@@ -21,7 +21,7 @@ class PlayerUseCase @Inject constructor(private val playerRepository: PlayerRepo
         playerRepository.removePlayer(id)
     }
 
-    fun isValidData(player: PlayerEntity): Boolean = with(player) { name.isEmpty() || age > 0 || position.isEmpty() }
+    fun isValidData(player: PlayerEntity): Boolean = with(player) { name.isNotEmpty() && age > 0 && position.isNotEmpty() }
 
     suspend fun updateData(player: PlayerEntity) = with(player) {
         if (id.isEmpty()) {
