@@ -46,11 +46,12 @@ class CreateEditPlayerFragment : BaseFragment<FragmentCreateEditPlayerBinding, T
     }
 
     private fun infoObserver() = Observer<Boolean> { hasInfoComplete ->
-        if (hasInfoComplete == true) {
-            findNavController().popBackStack()
-        }
-        if (hasInfoComplete == false) {
-            Snackbar.make(binding.btnCreatePlayer, R.string.create_player_missing_info, Snackbar.LENGTH_SHORT).show()
+        hasInfoComplete?.let {
+            if (hasInfoComplete == true) {
+                findNavController().popBackStack()
+            } else {
+                Snackbar.make(binding.btnCreatePlayer, R.string.create_player_missing_info, Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 

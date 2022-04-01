@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.domain.entity.PlayerEntity
 import com.example.myteam.base.BaseFragment
 import com.example.myteam.databinding.FragmentTeamBinding
@@ -14,13 +15,16 @@ import com.example.myteam.team.TeamFragmentDirections.Companion.toCreatePlayerFr
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TeamFragment : BaseFragment<FragmentTeamBinding, TeamActivity>() {
+class TeamFragment : BaseFragment<FragmentTeamBinding, TeamActivity>(), OnStartDragListener {
 
     private val viewModel: TeamViewModel by viewModels()
+    private var itemTouchHelper: ItemTouchHelper? = null
+    private lateinit var myAdapter: TeamPlayerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpRecyclerView()
         initOnClickListeners()
         initObservers()
     }
@@ -34,29 +38,35 @@ class TeamFragment : BaseFragment<FragmentTeamBinding, TeamActivity>() {
         binding.fabTeamAddPlayer.setOnClickListener(addPlayerListener)
     }
 
+    private val addPlayerListener = View.OnClickListener {
+        findNavController().navigate(toCreatePlayerFragment())
+    }
+
     private fun initObservers() {
         viewModel.playersLiveData.observe(viewLifecycleOwner, playersObserver())
     }
 
     private fun playersObserver() = Observer<List<PlayerEntity>> {
-        setUpRecyclerView(it)
+        myAdapter.setData(it)
     }
 
-    private fun setUpRecyclerView(dialogResult: List<PlayerEntity>) {
-        val myAdapter = TeamPlayerAdapter(
-            dialogResult.toMutableList(),
+    private fun setUpRecyclerView() {
+        myAdapter = TeamPlayerAdapter(
+            this,
+            { viewModel.updateList(it) },
             { findNavController().navigate(toCreatePlayerFragment(it)) },
             { viewModel.removePlayer(it.id) }
         )
         binding.rvTeamPlayers.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = myAdapter
-            ItemTouchHelper(SwipeHelperCallback(myAdapter)).attachToRecyclerView(this)
+            itemTouchHelper = ItemTouchHelper(HelperCallback(myAdapter))
+            itemTouchHelper?.attachToRecyclerView(this)
         }
     }
 
-    private val addPlayerListener = View.OnClickListener {
-        findNavController().navigate(toCreatePlayerFragment())
+    override fun onStartDrag(viewHolder: RecyclerView.ViewHolder?) {
+        viewHolder?.let { itemTouchHelper?.startDrag(it) }
     }
 
     override fun getBindingClass() = FragmentTeamBinding.inflate(layoutInflater)

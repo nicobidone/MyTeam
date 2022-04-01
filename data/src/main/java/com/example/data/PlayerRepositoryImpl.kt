@@ -57,6 +57,17 @@ class PlayerRepositoryImpl @Inject constructor(private val realm: Realm) : Playe
         }
     }
 
+    override suspend fun updateList(list: List<PlayerEntity>) {
+        realm.executeTransactionAwait(Dispatchers.IO) { realmTransaction ->
+            val players = realmTransaction.where(PlayerRealm::class.java).findAll().createSnapshot()
+            for (i in players.indices) {
+                players[i]?.age = list[i].age
+                players[i]?.name = list[i].name
+                players[i]?.position = list[i].position.toString()
+            }
+        }
+    }
+
     private fun PlayerRealm.mapPlayer() = PlayerEntity(
         id = id,
         name = name,

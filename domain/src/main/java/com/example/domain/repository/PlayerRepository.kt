@@ -8,4 +8,5 @@ interface PlayerRepository {
     suspend fun getPlayers(): List<PlayerEntity>
     suspend fun updatePlayer(id: String, name: String, age: Int, position: List<Position>)
     suspend fun removePlayer(id: String)
+    suspend fun updateList(list: List<PlayerEntity>)
 }

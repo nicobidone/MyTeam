@@ -30,4 +30,8 @@ class PlayerUseCase @Inject constructor(private val playerRepository: PlayerRepo
             updatePlayer(id, name, age, position)
         }
     }
+
+    suspend fun updateList(list: List<PlayerEntity>) {
+        playerRepository.updateList(list)
+    }
 }

@@ -25,4 +25,10 @@ class TeamViewModel @Inject constructor(private val playerUseCase: PlayerUseCase
             playerUseCase.removePlayer(id)
         }
     }
+
+    fun updateList(list: List<PlayerEntity>) {
+        viewModelScope.launch {
+            playerUseCase.updateList(list)
+        }
+    }
 }
