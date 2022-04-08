@@ -66,8 +66,8 @@ dependencies {
     implementation base.hilt
     kapt base.hilt_kapt
 
-    implementation base.nav_fragment
-    implementation base.nav_ui
+    implementation presentation.nav_fragment
+    implementation presentation.nav_ui
 
     testImplementation base_test.junit
     androidTestImplementation base_test.junit_ext

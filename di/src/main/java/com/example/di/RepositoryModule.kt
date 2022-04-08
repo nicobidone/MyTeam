@@ -1,6 +1,8 @@
 package com.example.di
 
-import com.example.data.PlayerRepositoryImpl
+import com.example.data.repository.MatchRepositoryImpl
+import com.example.data.repository.PlayerRepositoryImpl
+import com.example.domain.repository.MatchRepository
 import com.example.domain.repository.PlayerRepository
 import dagger.Binds
 import dagger.Module
@@ -13,4 +15,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun playerRepository(playerRepositoryImpl: PlayerRepositoryImpl): PlayerRepository
+
+    @Binds
+    abstract fun matchRepository(matchRepositoryImpl: MatchRepositoryImpl): MatchRepository
 }

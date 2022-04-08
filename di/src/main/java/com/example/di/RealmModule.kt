@@ -20,7 +20,7 @@ object RealmModule {
         Realm.setDefaultConfiguration(
             RealmConfiguration
                 .Builder()
-                .name("My team proyect")
+                .name("My team project")
                 .schemaVersion(REALM_VERSION)
                 .deleteRealmIfMigrationNeeded()
                 .build()
