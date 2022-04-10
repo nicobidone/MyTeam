@@ -22,19 +22,19 @@ class CreateEditPlayerFragment : BaseFragment<FragmentCreateEditPlayerBinding, T
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        init()
-        initOnClickListeners()
-        initObservers()
+        setUpInit()
+        setUpOnClickListeners()
+        setUpObservers()
     }
 
-    private fun init() {
+    private fun setUpInit() {
         args.arg?.let {
             viewModelEdit.initState(it)
             binding.btnCreatePlayer.text = getString(R.string.create_player_action_edit)
         }
     }
 
-    private fun initObservers() {
+    private fun setUpObservers() {
         viewModelEdit.missingInfoLiveData.observe(viewLifecycleOwner, infoObserver())
         viewModelEdit.playerEntity.observe(viewLifecycleOwner, playerObserver())
     }
@@ -55,7 +55,7 @@ class CreateEditPlayerFragment : BaseFragment<FragmentCreateEditPlayerBinding, T
         }
     }
 
-    private fun initOnClickListeners() {
+    private fun setUpOnClickListeners() {
         binding.btnCreatePlayer.setOnClickListener(createUpdatePlayerListener)
     }
 

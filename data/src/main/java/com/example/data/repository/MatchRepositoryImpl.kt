@@ -1,8 +1,8 @@
 package com.example.data.repository
 
-import com.example.data.endpoint.mapper.toMatchEntity
-import com.example.data.endpoint.service.ServiceResult
-import com.example.data.endpoint.service.MatchService
+import com.example.data.remote.mapper.toMatchEntity
+import com.example.data.remote.ServiceResult
+import com.example.data.remote.service.MatchService
 import com.example.domain.entity.MatchEntity
 import com.example.domain.repository.MatchRepository
 import javax.inject.Inject

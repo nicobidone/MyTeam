@@ -1,7 +1,7 @@
 package com.example.di
 
-import com.example.data.endpoint.service.MatchService
-import com.example.data.endpoint.service.MatchServiceImpl
+import com.example.data.remote.service.MatchService
+import com.example.data.remote.service.MatchServiceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

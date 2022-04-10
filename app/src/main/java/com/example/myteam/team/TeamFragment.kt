@@ -25,8 +25,8 @@ class TeamFragment : BaseFragment<FragmentTeamBinding, TeamActivity>(), OnStartD
         super.onViewCreated(view, savedInstanceState)
 
         setUpRecyclerView()
-        initOnClickListeners()
-        initObservers()
+        setUpOnClickListeners()
+        setUpObservers()
     }
 
     override fun onResume() {
@@ -34,7 +34,7 @@ class TeamFragment : BaseFragment<FragmentTeamBinding, TeamActivity>(), OnStartD
         viewModel.getPlayers()
     }
 
-    private fun initOnClickListeners() {
+    private fun setUpOnClickListeners() {
         binding.fabTeamAddPlayer.setOnClickListener(addPlayerListener)
     }
 
@@ -42,7 +42,7 @@ class TeamFragment : BaseFragment<FragmentTeamBinding, TeamActivity>(), OnStartD
         findNavController().navigate(toCreatePlayerFragment())
     }
 
-    private fun initObservers() {
+    private fun setUpObservers() {
         viewModel.playersLiveData.observe(viewLifecycleOwner, playersObserver())
     }
 

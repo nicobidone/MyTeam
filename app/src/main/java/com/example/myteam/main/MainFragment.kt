@@ -21,9 +21,22 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainActivity>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnMainRequest.setOnClickListener(requestListener)
-        viewModel.matchesLiveData.observe(viewLifecycleOwner, matchesObserver())
+
+        setUpInit()
+        setUpOnClickListeners()
+        setUpObservers()
+    }
+
+    private fun setUpInit() {
         viewModel.getMatches()
+    }
+
+    private fun setUpObservers() {
+        viewModel.matchesLiveData.observe(viewLifecycleOwner, matchesObserver())
+    }
+
+    private fun setUpOnClickListeners() {
+        binding.btnMainRequest.setOnClickListener(requestListener)
     }
 
     private fun matchesObserver() = Observer<List<MatchEntity>> {

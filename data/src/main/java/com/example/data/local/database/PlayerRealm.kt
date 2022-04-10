@@ -1,4 +1,4 @@
-package com.example.data.database
+package com.example.data.local.database
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

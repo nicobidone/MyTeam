@@ -1,4 +1,4 @@
-package com.example.di
+package com.example.di.client
 
 import android.content.Context
 import dagger.Module
@@ -12,7 +12,7 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object RealmModule {
+object LocalClient {
     @Provides
     @Singleton
     fun providesRealmDatabase(@ApplicationContext context: Context): Realm {

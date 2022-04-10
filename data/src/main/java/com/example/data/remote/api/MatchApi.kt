@@ -1,6 +1,6 @@
-package com.example.data.endpoint.api
+package com.example.data.remote.api
 
-import com.example.data.endpoint.model.response.MatchModel
+import com.example.data.remote.model.response.MatchModel
 import retrofit2.http.GET
 
 interface MatchApi {
