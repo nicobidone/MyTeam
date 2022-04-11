@@ -36,11 +36,11 @@ class MainFragment : BaseFragment<FragmentMainBinding, MainActivity>() {
     }
 
     private fun setUpOnClickListeners() {
-        binding.btnMainRequest.setOnClickListener(requestListener)
+        binding.btnMainAction.setOnClickListener(requestListener)
     }
 
     private fun matchesObserver() = Observer<List<MatchEntity>> {
-        binding.tvMainRequest.text = it.toString()
+        binding.cvMainList.setContent { if (it.isNotEmpty()) MatchList(it) }
     }
 
     private val requestListener = View.OnClickListener {

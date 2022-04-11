@@ -10,4 +10,5 @@
     <string name="create_player_action">crear</string>
     <string name="create_player_missing_info">Datos faltantes</string>
     <string name="create_player_action_edit">Guardar</string>
+    <string name="main_action">My Players</string>
 </resources>

@@ -5,5 +5,5 @@ import java.io.Serializable
 data class MatchEntity(
     val field: String,
     val players: Int,
-    val time: Int
+    val time: Long
 ) : Serializable

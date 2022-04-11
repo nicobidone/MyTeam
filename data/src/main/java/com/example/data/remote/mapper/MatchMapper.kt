@@ -6,5 +6,5 @@ import com.example.domain.entity.MatchEntity
 internal fun MatchModel.toMatchEntity() = MatchEntity(
     field = this.field ?: "",
     players = this.players ?: 0,
-    time = this.time ?: 0
+    time = this.time?.toLong() ?: 0L
 )

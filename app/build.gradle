@@ -12,12 +12,12 @@ apply from: "$rootDir/buildsystem/jacoco.gradle"
 preBuild.dependsOn ktlintFormat
 
 android {
-    compileSdk 30
+    compileSdk 32
 
     defaultConfig {
         applicationId "com.example.myteam"
         minSdk 23
-        targetSdk 30
+        targetSdk 32
         versionCode 1
         versionName "1.0"
 
@@ -40,7 +40,13 @@ android {
 
     buildFeatures {
         viewBinding true
+        compose true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.compose
+    }
+
 }
 
 kapt {
@@ -68,6 +74,11 @@ dependencies {
 
     implementation presentation.nav_fragment
     implementation presentation.nav_ui
+
+    implementation presentation.compose
+    implementation presentation.compose_foundation
+    implementation presentation.compose_material
+    implementation presentation.compose_tooling
 
     testImplementation base_test.junit
     androidTestImplementation base_test.junit_ext

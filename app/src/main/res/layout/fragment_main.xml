@@ -7,21 +7,19 @@
     tools:context=".main.MainFragment">
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_main_request"
+        android:id="@+id/btn_main_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="new activity"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/main_action"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_main_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/cv_main_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_main_action" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
