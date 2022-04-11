@@ -41,7 +41,8 @@ dependencies {
     implementation project(path: ':domain')
 
     implementation data.retrofit
-    implementation data.converter_moshi
+    implementation data.moshi
+    kapt data.moshi_kapt
 
     implementation base.hilt
     kapt base.hilt_kapt
